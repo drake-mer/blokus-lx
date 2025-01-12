@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         3: "yellow",
         4: "green",
     }
+
     const WIDTH = 20;
     const HEIGHT = 20;
 
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Créer la grille principale 20x20
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < WIDTH * HEIGHT; i++) {
         const cell = document.createElement('div');
         cell.classList.add('grid-cell');
         cell.dataset.index = i;
@@ -148,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Vérifier si une pièce peut être placée sur la grille
     function canPlacePiece(piece, startIndex) {
-        const startX = startIndex % 20;
-        const startY = Math.floor(startIndex / 20);
+        const startX = startIndex % WIDTH;
+        const startY = Math.floor(startIndex / HEIGHT);
         
         for (let y = 0; y < piece.length; y++) {
             for (let x = 0; x < piece[0].length; x++) {

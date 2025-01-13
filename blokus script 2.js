@@ -1,10 +1,31 @@
-function foo(){
-    console.log("hello")
+function printMessage(message){
+    console.log(message)
+}
+
+function createEmptyBoard(width, height) {
+    let board = Array(width * height)
+    board.fill(0)
+}
+
+function canPlacePiece(piece, board) {
+
+}
+
+// Fonction pour faire pivoter une pièce de 90 degrés dans le sens des aiguilles d'une montre
+function rotatePiece(piece) {
+    const rotated = [];
+    for (let x = 0; x < piece[0].length; x++) {
+        const newRow = [];
+        for (let y = piece.length - 1; y >= 0; y--) {
+            newRow.push(piece[y][x]);
+        }
+        rotated.push(newRow);
+    }
+    return rotated;
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    foo();
     const mainGrid = document.getElementById('main-grid');
     const playerInfo = document.getElementById('player-info');
     const piecePreview = document.getElementById('piece-preview');
@@ -127,19 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(cellDiv);
             });
         });
-    }
-
-    // Fonction pour faire pivoter une pièce de 90 degrés dans le sens des aiguilles d'une montre
-    function rotatePiece(piece) {
-        const rotated = [];
-        for (let x = 0; x < piece[0].length; x++) {
-            const newRow = [];
-            for (let y = piece.length - 1; y >= 0; y--) {
-                newRow.push(piece[y][x]);
-            }
-            rotated.push(newRow);
-        }
-        return rotated;
     }
 
     // Fonction pour retourner une pièce (en miroir horizontal)
